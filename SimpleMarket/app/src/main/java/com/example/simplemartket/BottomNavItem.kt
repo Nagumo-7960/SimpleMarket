@@ -18,6 +18,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.simplemartket.ui.theme.ThemeColor
 
 data class BottomNavItem(
     val name:String,
@@ -36,24 +37,18 @@ fun BottomNavigationBar(
     BottomNavigation (
         modifier = modifier,
         backgroundColor = Color.White,
-        elevation = 5.dp
+        elevation = 20.dp
     ){
         items.forEach { item ->
             val selected = item.route == backStackEntry.value?.destination?.route
             BottomNavigationItem(
                 selected = selected,
                 onClick = { onItemClick(item) },
-                selectedContentColor = Color.DarkGray,
+                selectedContentColor = Color.Cyan,
                 unselectedContentColor = Color.Gray,
                 icon = {
                     Column(horizontalAlignment = CenterHorizontally) {
                         Icon(imageVector = item.icon, contentDescription = item.name)
-                        if(selected){
-                            Text(text = item.name,
-                                textAlign = TextAlign.Center,
-                                fontSize = 10.sp
-                            )
-                        }
                     }
 
                 }
