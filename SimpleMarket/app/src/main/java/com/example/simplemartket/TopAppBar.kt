@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.example.simplemartket.ui.theme.ThemeColor
 
 @Composable
 fun TopAppBar() {
@@ -29,6 +30,6 @@ fun TopAppBar() {
                 )
             }
         },
-        backgroundColor = Color.Cyan
+        backgroundColor = ThemeColor
     )
 }
