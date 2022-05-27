@@ -25,6 +25,7 @@ class MainActivity : ComponentActivity() {
             Navigation(navController = navController)
 
             Scaffold(
+                topBar = { TopAppBar() },
                 bottomBar = {
                     BottomNavigationBar(
                         items = listOf(
