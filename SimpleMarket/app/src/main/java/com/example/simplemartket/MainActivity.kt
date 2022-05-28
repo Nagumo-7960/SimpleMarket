@@ -15,6 +15,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.simplemartket.model.BottomNavItem
+import com.example.simplemartket.ui.components.BottomNavigationBar
 import com.example.simplemartket.ui.theme.SimpleMartketTheme
 
 class MainActivity : ComponentActivity() {
