@@ -11,7 +11,7 @@ val Products = listOf(
     Product(
         id = 1,
         name = "季節の美味しいぶどう",
-        imageUrl = "https://d.kuku.lu/bef40a330",
+        imageUrl = "http://drrrkari.com/upimg/b45367d68cf9ded3204f01a6d519f6b4.jpeg",
         value = 2000
     ),
     Product(

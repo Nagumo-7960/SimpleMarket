@@ -1,5 +1,6 @@
 package com.example.simplemartket.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,14 +16,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.ImagePainter.State.Empty.painter
+import coil.compose.rememberImagePainter
 import com.example.simplemartket.R
 import com.example.simplemartket.model.Product
 import com.example.simplemartket.model.Products
 
 @Composable
 fun ProductsCard(
-    products:List<Product>
+    products:Product
 ){
+    val painter = rememberImagePainter(products.imageUrl)
     Card(
         modifier = Modifier
             .padding(
@@ -37,25 +41,25 @@ fun ProductsCard(
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
-                painter = painterResource(id = R.drawable.grape),
+                painter = painter,
                 contentDescription = "fashon_watch",
                 modifier = Modifier
-//                    .size(
-//                        width = 150.dp,
-//                        height = 150.dp
-//                    )
+                    .size(
+                        width = 150.dp,
+                        height = 150.dp
+                    )
                     .clickable {
 
                     },
                 contentScale = ContentScale.Fit
             )
+            Log.v("TEST", "${painter.state}")
             Text(
-                text = products.first().name,
+                text = products.name,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
             )
-            Text(text = products.first().value.toString()+"円")
-
+            Text(text = products.value.toString()+"円")
         }
     }
 }
@@ -63,5 +67,6 @@ fun ProductsCard(
 @Preview
 @Composable
 fun PreviewProductCard(){
-    ProductsCard(Products)
+    val product = Products.first()
+    ProductsCard(product)
 }

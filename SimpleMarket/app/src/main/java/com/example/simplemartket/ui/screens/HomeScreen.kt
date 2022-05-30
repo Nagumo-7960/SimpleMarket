@@ -7,6 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.simplemartket.model.Products
+import com.example.simplemartket.ui.components.ProductsCard
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -14,6 +16,8 @@ fun HomeScreen(navController: NavController) {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
+        val product = Products.first()
+        ProductsCard(products = product)
         Text(text = "home")
     }
 }
