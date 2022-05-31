@@ -17,7 +17,7 @@ val Products = listOf(
     Product(
         id = 2,
         name = "売れ残ったみかん",
-        imageUrl = "https://d.kuku.lu/e9c62ac40",
+        imageUrl = "javascript:downloadDirect('https://file31-d.kuku.lu/files_file18/20220530-2025_9b8dc764a6818d030f9f195521b365c3.jpg');",
         value = 3000
     ),
     Product(
