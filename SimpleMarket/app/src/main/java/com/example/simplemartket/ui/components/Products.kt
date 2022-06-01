@@ -42,7 +42,7 @@ fun ProductsCard(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
                 painter = painter,
-                contentDescription = "fashon_watch",
+                contentDescription = products.id.toString(),
                 modifier = Modifier
                     .size(
                         width = 150.dp,
@@ -50,8 +50,9 @@ fun ProductsCard(
                     )
                     .clickable {
 
-                    },
-                contentScale = ContentScale.Fit
+                    }
+                    .fillMaxSize(),
+                contentScale = ContentScale.Crop
             )
             Log.v("TEST", "${painter.state}")
             Text(

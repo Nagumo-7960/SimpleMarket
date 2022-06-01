@@ -10,7 +10,7 @@ data class Product(
 val Products = listOf(
     Product(
         id = 0,
-        name = "季節の美味しいぶどう",
+        name = "美味しいぶどう",
         imageUrl = "http://drrrkari.com/upimg/86a50ecc005ef9cc14faf582d4981fc3.jpeg",
         value = 2000
     ),
@@ -22,13 +22,13 @@ val Products = listOf(
     ),
     Product(
         id = 2,
-        name = "野山に生えまくってるいちご",
+        name = "野山のいちご",
         imageUrl = "http://drrrkari.com/upimg/8ec6eeeb2ea1d0acf8f239ea1421abb4.jpeg",
         value = 2300
     ),
     Product(
         id = 3,
-        name = "酸っぱすぎて廃棄寸前のレモン",
+        name = "酸っぱすぎレモン",
         imageUrl = "http://drrrkari.com/upimg/3d509c35af2119102ee0796523cbbb73.jpeg",
         value = 4300
     ),
