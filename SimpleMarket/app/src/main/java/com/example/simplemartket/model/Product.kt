@@ -9,21 +9,34 @@ data class Product(
 
 val Products = listOf(
     Product(
-        id = 1,
+        id = 0,
         name = "季節の美味しいぶどう",
-        imageUrl = "http://drrrkari.com/upimg/b45367d68cf9ded3204f01a6d519f6b4.jpeg",
+        imageUrl = "http://drrrkari.com/upimg/86a50ecc005ef9cc14faf582d4981fc3.jpeg",
         value = 2000
     ),
     Product(
-        id = 2,
+        id = 1,
         name = "売れ残ったみかん",
-        imageUrl = "javascript:downloadDirect('https://file31-d.kuku.lu/files_file18/20220530-2025_9b8dc764a6818d030f9f195521b365c3.jpg');",
+        imageUrl = "http://drrrkari.com/upimg/de778b1681beb4e5a7a1da2283646240.jpeg",
         value = 3000
     ),
     Product(
-        id = 3,
-        name = "野山のいちご",
-        imageUrl = "https://d.kuku.lu/c3a650705",
+        id = 2,
+        name = "野山に生えまくってるいちご",
+        imageUrl = "http://drrrkari.com/upimg/8ec6eeeb2ea1d0acf8f239ea1421abb4.jpeg",
         value = 2300
+    ),
+    Product(
+        id = 3,
+        name = "酸っぱすぎて廃棄寸前のレモン",
+        imageUrl = "http://drrrkari.com/upimg/3d509c35af2119102ee0796523cbbb73.jpeg",
+        value = 4300
+    ),
+    Product(
+        id = 4,
+        name = "伝説のりんご",
+        imageUrl = "http://drrrkari.com/upimg/0fca66665e306dda32dab0acfa57cb66.jpeg",
+        value = 5300
     )
+
 )

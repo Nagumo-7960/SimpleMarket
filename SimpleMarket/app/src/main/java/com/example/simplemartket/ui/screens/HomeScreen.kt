@@ -6,24 +6,18 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.example.simplemartket.model.Products
-import com.example.simplemartket.ui.components.ProductsCard as ProductsCard1
+import com.example.simplemartket.ui.components.ProductCards as ProductCards1
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-//        contentAlignmentlignment = Alignment.Center
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize(),
     ) {
-//        val product = Products.first()
-        //ここで回そう！
-        for (i in Products) {
-            var j:Int = 0
-            ProductsCard1(products = Products.get(j))
-            j++
+        item {
+            ProductCards1()
         }
-//        ProductsCard(products = product)
-//        Text(text = "home")
+
     }
 }
 

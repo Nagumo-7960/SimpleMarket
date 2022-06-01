@@ -63,6 +63,13 @@ fun ProductsCard(
         }
     }
 }
+@Composable
+fun ProductCards(){
+    for (i in 0..Products.size-1) {
+        ProductsCard(products = Products.get(i))
+        Log.d("Product", i.toString())
+    }
+}
 
 @Preview
 @Composable
