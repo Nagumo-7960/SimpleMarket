@@ -11,7 +11,15 @@ import com.example.simplemartket.ui.screens.HomeScreen
 fun Navigation(navController: NavHostController) {
 
     NavHost(navController = navController, startDestination = "home") {
-        composable("home") { HomeScreen(navController) }
-        composable("favorite") { FavoriteScreen(navController) }
+        composable("home") {
+            HomeScreen {
+                navController.navigate("home")
+            }
+        }
+        composable("favorite") {
+            FavoriteScreen{
+                navController.navigate("favorite")
+            }
+        }
     }
 }
