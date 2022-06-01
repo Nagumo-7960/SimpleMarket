@@ -39,7 +39,7 @@ fun ProductsCard(
         elevation = 10.dp,
         shape = RoundedCornerShape(20.dp)
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column() {
             Image(
                 painter = painter,
                 contentDescription = products.id.toString(),
@@ -57,10 +57,19 @@ fun ProductsCard(
             Log.v("TEST", "${painter.state}")
             Text(
                 text = products.name,
-                fontSize = 18.sp,
+                fontSize = 15.sp,
+                modifier = Modifier.padding(
+                    start = 10.dp
+                ),
                 fontWeight = FontWeight.Bold
             )
-            Text(text = products.value.toString()+"円")
+            Text(
+                text = products.value.toString()+"円",
+                fontSize = 13.sp,
+                modifier = Modifier.padding(
+                    start = 10.dp
+                )
+            )
         }
     }
 }
