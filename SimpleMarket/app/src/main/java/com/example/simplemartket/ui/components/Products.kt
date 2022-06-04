@@ -24,7 +24,8 @@ import com.example.simplemartket.model.Products
 
 @Composable
 fun ProductsCard(
-    products:Product
+    products:Product,
+    toDetail:() -> Unit
 ){
     val painter = rememberImagePainter(products.imageUrl)
     Card(
@@ -35,6 +36,13 @@ fun ProductsCard(
                 end = 20.dp,
                 bottom = 20.dp
 
+            )
+            .clickable(
+                enabled = true,
+                onClick = {
+                    toDetail()
+                    Log.v("TEST", "ボタンが押された")
+                }
             ),
         elevation = 10.dp,
         shape = RoundedCornerShape(20.dp)
@@ -48,9 +56,6 @@ fun ProductsCard(
                         width = 150.dp,
                         height = 150.dp
                     )
-                    .clickable {
-
-                    }
                     .fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
@@ -74,9 +79,9 @@ fun ProductsCard(
     }
 }
 @Composable
-fun ProductCards(){
+fun ProductCards(toDetail: () -> Unit){
     for (i in 0..Products.size-1) {
-        ProductsCard(products = Products.get(i))
+        ProductsCard(products = Products.get(i),toDetail)
         Log.d("Product", i.toString())
     }
 }
@@ -85,5 +90,5 @@ fun ProductCards(){
 @Composable
 fun PreviewProductCard(){
     val product = Products.first()
-    ProductsCard(product)
+//    ProductsCard(product)
 }

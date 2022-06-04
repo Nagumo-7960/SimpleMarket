@@ -9,13 +9,13 @@ import androidx.navigation.NavController
 import com.example.simplemartket.ui.components.ProductCards as ProductCards1
 
 @Composable
-fun HomeScreen(toHome:() -> Unit) {
+fun HomeScreen(toDetail:() -> Unit) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize(),
     ) {
         item {
-            ProductCards1()
+            ProductCards1(toDetail)
         }
 
     }
