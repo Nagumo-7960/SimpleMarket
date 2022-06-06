@@ -1,18 +1,24 @@
 package com.example.simplemartket.ui.screens
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Text
+import android.media.Image
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import coil.compose.rememberImagePainter
+import com.example.simplemartket.model.Product
+import com.example.simplemartket.model.Products
 
 @Composable
 fun ProductDetailScreen(toDetail:() -> Unit){
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "detail")
+    Column() {
+        ProductDetail(products = Products.first())
     }
+}
+
+@Composable
+fun ProductDetail(products: Product){
+    val painter = rememberImagePainter(products.imageUrl)
+    Image(
+        painter = painter,
+        contentDescription = "product_image")
 }
