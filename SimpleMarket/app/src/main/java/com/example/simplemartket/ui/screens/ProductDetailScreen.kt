@@ -82,7 +82,7 @@ fun ProductDetail(products: Product) {
                 )
                 .fillMaxWidth()
         ) {
-            FavoriteButton()
+            FavoriteButton(products)
         }
     }
 

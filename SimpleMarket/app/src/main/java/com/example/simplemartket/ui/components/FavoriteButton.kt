@@ -1,5 +1,6 @@
 package com.example.simplemartket.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
@@ -15,12 +16,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.simplemartket.model.Product
+import com.example.simplemartket.model.Products
 import com.example.simplemartket.ui.theme.ThemeColor
 
 @Composable
-fun FavoriteButton(){
+fun FavoriteButton(product: Product) {
     Button(
-        onClick = { /* ... */ },
+        onClick = {
+            product.favorite = product.favorite == false
+            Log.v("TEST-f", "${product.name}_favorite:${product.favorite}")
+        },
         // Uses ButtonDefaults.ContentPadding by default
         contentPadding = PaddingValues(
             start = 20.dp,
@@ -47,6 +53,6 @@ fun FavoriteButton(){
 
 @Preview
 @Composable
-fun PreviewFavoriteButton(){
-    FavoriteButton()
+fun PreviewFavoriteButton() {
+    FavoriteButton(Products.first())
 }
