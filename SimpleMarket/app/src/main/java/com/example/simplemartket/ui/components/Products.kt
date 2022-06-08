@@ -29,10 +29,11 @@ fun ProductsCard(
     val painter = rememberImagePainter(products.imageUrl)
     Card(
         modifier = Modifier
+            .fillMaxSize()
             .padding(
                 top = 20.dp,
-                start = 20.dp,
-                end = 20.dp,
+                start = 40.dp,
+                end = 40.dp,
                 bottom = 20.dp
             )
             .clickable(
@@ -51,8 +52,8 @@ fun ProductsCard(
                 contentDescription = products.id.toString(),
                 modifier = Modifier
                     .size(
-                        width = 150.dp,
-                        height = 150.dp
+                        width = 5000.dp,
+                        height = 200.dp
                     )
                     .fillMaxSize(),
                 contentScale = ContentScale.Crop
@@ -60,17 +61,20 @@ fun ProductsCard(
             Log.v("TEST", "${painter.state}")
             Text(
                 text = products.name,
-                fontSize = 15.sp,
+                fontSize = 20.sp,
                 modifier = Modifier.padding(
-                    start = 10.dp
+                    top = 20.dp,
+                    start = 15.dp
                 ),
                 fontWeight = FontWeight.Bold
             )
             Text(
                 text = products.value.toString() + "円",
-                fontSize = 13.sp,
+                fontSize = 17.sp,
                 modifier = Modifier.padding(
-                    start = 10.dp
+                    top = 20.dp,
+                    start = 15.dp,
+                    bottom = 20.dp
                 )
             )
         }
@@ -89,5 +93,5 @@ fun ProductCards(toDetail: (Int) -> Unit = { _ -> }) {
 @Composable
 fun PreviewProductCard() {
     val product = Products.first()
-//    ProductsCard(product)
+    ProductsCard(product)
 }
