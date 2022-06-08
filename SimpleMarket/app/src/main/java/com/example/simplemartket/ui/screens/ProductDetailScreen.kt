@@ -17,9 +17,9 @@ import com.example.simplemartket.model.Products
 import com.example.simplemartket.ui.components.FavoriteButton
 
 @Composable
-fun ProductDetailScreen(toDetail: () -> Unit) {
+fun ProductDetailScreen(toDetail: Int) {
     Column {
-        ProductDetail(products = Products.first())
+        ProductDetail(products = Products.get(toDetail))
     }
 }
 

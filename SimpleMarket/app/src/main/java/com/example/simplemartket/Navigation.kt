@@ -3,8 +3,10 @@ package com.example.simplemartket
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.simplemartket.ui.screens.FavoriteScreen
 import com.example.simplemartket.ui.screens.HomeScreen
 import com.example.simplemartket.ui.screens.ProductDetailScreen
@@ -28,10 +30,14 @@ fun Navigation(navController: NavHostController) {
         }
         composable(
             "detail/{productId}",
-        ) {
-            ProductDetailScreen {
-                navController.navigate("detail")
-            }
+            arguments = listOf(
+                navArgument("productId"){
+                    type = NavType.IntType
+                }
+            )
+        ) { backStackEntry ->
+            val productId = backStackEntry.arguments?.getInt("productId")?:0
+            ProductDetailScreen (productId)
         }
     }
 }
