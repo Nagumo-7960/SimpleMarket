@@ -3,7 +3,10 @@ package com.example.simplemartket.ui.components
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -20,9 +23,9 @@ import com.example.simplemartket.model.Products
 
 @Composable
 fun ProductsCard(
-    products:Product,
-    toDetail:() -> Unit
-){
+    products: Product,
+    toDetail: (Int) -> Unit = { _ -> }
+) {
     val painter = rememberImagePainter(products.imageUrl)
     Card(
         modifier = Modifier
@@ -35,7 +38,7 @@ fun ProductsCard(
             .clickable(
                 enabled = true,
                 onClick = {
-                    toDetail()
+                    toDetail(products.id)
                     Log.v("TEST", "ボタンが押された")
                 }
             ),
@@ -64,7 +67,7 @@ fun ProductsCard(
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = products.value.toString()+"円",
+                text = products.value.toString() + "円",
                 fontSize = 13.sp,
                 modifier = Modifier.padding(
                     start = 10.dp
@@ -73,17 +76,18 @@ fun ProductsCard(
         }
     }
 }
+
 @Composable
-fun ProductCards(toDetail: () -> Unit){
-    for (i in 0..Products.size-1) {
-        ProductsCard(products = Products.get(i),toDetail)
+fun ProductCards(toDetail: (Int) -> Unit = { _ -> }) {
+    for (i in 0..Products.size - 1) {
+        ProductsCard(products = Products.get(i), toDetail)
         Log.d("Product", i.toString())
     }
 }
 
 @Preview
 @Composable
-fun PreviewProductCard(){
+fun PreviewProductCard() {
     val product = Products.first()
 //    ProductsCard(product)
 }

@@ -1,5 +1,6 @@
 package com.example.simplemartket
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -15,8 +16,9 @@ fun Navigation(navController: NavHostController) {
         composable(
             "home",
         ) {
-            HomeScreen {
-                navController.navigate("detail")
+            HomeScreen { productId ->
+                Log.v("TEST", "${productId}")
+                navController.navigate("detail/${productId}")
             }
         }
         composable("favorite") {
@@ -25,7 +27,7 @@ fun Navigation(navController: NavHostController) {
             }
         }
         composable(
-            "detail",
+            "detail/{productId}",
         ) {
             ProductDetailScreen {
                 navController.navigate("detail")
