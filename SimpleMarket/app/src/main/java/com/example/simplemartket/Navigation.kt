@@ -12,18 +12,22 @@ import com.example.simplemartket.ui.screens.ProductDetailScreen
 fun Navigation(navController: NavHostController) {
 
     NavHost(navController = navController, startDestination = "home") {
-        composable("home") {
+        composable(
+            "home",
+        ) {
             HomeScreen {
                 navController.navigate("detail")
             }
         }
         composable("favorite") {
-            FavoriteScreen{
+            FavoriteScreen {
                 navController.navigate("favorite")
             }
         }
-        composable("detail") {
-            ProductDetailScreen{
+        composable(
+            "detail",
+        ) {
+            ProductDetailScreen {
                 navController.navigate("detail")
             }
         }
