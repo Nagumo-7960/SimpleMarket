@@ -15,6 +15,7 @@ import coil.compose.rememberImagePainter
 import com.example.simplemartket.model.Product
 import com.example.simplemartket.model.Products
 import com.example.simplemartket.ui.components.FavoriteButton
+import com.example.simplemartket.ui.components.NonFavoriteButton
 
 @Composable
 fun ProductDetailScreen(toDetail: Int) {
@@ -82,7 +83,8 @@ fun ProductDetail(products: Product) {
                 )
                 .fillMaxWidth()
         ) {
-            FavoriteButton(products)
+            if(products.favorite==true) FavoriteButton(products)
+            if(products.favorite==false) NonFavoriteButton(products)
         }
     }
 
