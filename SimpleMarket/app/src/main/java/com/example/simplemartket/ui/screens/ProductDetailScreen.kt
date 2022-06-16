@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -20,12 +21,13 @@ import com.example.simplemartket.ui.components.NonFavoriteButton
 @Composable
 fun ProductDetailScreen(toDetail: Int) {
     Column {
-        ProductDetail(products = Products.get(toDetail))
+        ProductDetail(products = Products.get(toDetail),FavoriteScreenViewModel())
     }
 }
 
 @Composable
-fun ProductDetail(products: Product) {
+fun ProductDetail(products: Product,viewModel: FavoriteScreenViewModel) {
+    val favooriteState = viewModel.fovoriteState.observeAsState()
     val painter = rememberImagePainter(products.imageUrl)
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -94,5 +96,5 @@ fun ProductDetail(products: Product) {
 @Preview
 @Composable
 fun PreviewProductDetail() {
-    ProductDetail(products = Products.first())
+    ProductDetail(products = Products.first(),FavoriteScreenViewModel())
 }
