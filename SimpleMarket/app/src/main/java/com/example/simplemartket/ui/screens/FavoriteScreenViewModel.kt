@@ -9,8 +9,8 @@ class FavoriteScreenViewModel: ViewModel(){
     private val _favoriteState = MutableLiveData(false)
     val favoriteState:LiveData<Boolean>get() = _favoriteState
 
-    fun changeFavoriteState(state:Boolean){
-        if(state==true) state!=false
-        if(state==false) state!=true
+    fun changeFavoriteState(){
+        if(_favoriteState.value==true) _favoriteState.value=false
+        if(_favoriteState.value==false) _favoriteState.value=true
     }
 }

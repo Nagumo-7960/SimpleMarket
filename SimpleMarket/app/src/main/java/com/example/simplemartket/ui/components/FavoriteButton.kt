@@ -29,9 +29,7 @@ fun FavoriteButton(product: Product,viewModel: FavoriteScreenViewModel) {
     val favoriteState = viewModel.favoriteState.observeAsState().value
     Button(
         onClick = {
-            if (favoriteState != null) {
-                viewModel.changeFavoriteState(favoriteState)
-            }
+            viewModel.changeFavoriteState()
             Log.d("favorite",favoriteState.toString())
         },
         // Uses ButtonDefaults.ContentPadding by default
@@ -63,9 +61,7 @@ fun NonFavoriteButton(product: Product,viewModel: FavoriteScreenViewModel) {
     val favoriteState = viewModel.favoriteState.observeAsState().value
     Button(
         onClick = {
-            if (favoriteState != null) {
-                viewModel.changeFavoriteState(favoriteState)
-            }
+            viewModel.changeFavoriteState()
             Log.d("favorite",favoriteState.toString())
         },
         // Uses ButtonDefaults.ContentPadding by default
