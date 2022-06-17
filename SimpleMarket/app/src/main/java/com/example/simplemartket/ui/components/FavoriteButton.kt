@@ -13,21 +13,26 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.simplemartket.model.Product
 import com.example.simplemartket.model.Products
+import com.example.simplemartket.ui.screens.FavoriteScreenViewModel
 import com.example.simplemartket.ui.theme.ThemeColor
 
 
 @Composable
-fun FavoriteButton(product: Product) {
+fun FavoriteButton(product: Product,viewModel: FavoriteScreenViewModel) {
+    val favoriteState = viewModel.favoriteState.observeAsState().value
     Button(
         onClick = {
-            product.favorite = product.favorite == false
-            Log.v("TEST-f", "${product.name}_favorite:${product.favorite}")
+            if (favoriteState != null) {
+                viewModel.changeFavoriteState(favoriteState)
+            }
+            Log.d("favorite",favoriteState.toString())
         },
         // Uses ButtonDefaults.ContentPadding by default
         contentPadding = PaddingValues(
@@ -54,11 +59,14 @@ fun FavoriteButton(product: Product) {
 }
 
 @Composable
-fun NonFavoriteButton(product: Product) {
+fun NonFavoriteButton(product: Product,viewModel: FavoriteScreenViewModel) {
+    val favoriteState = viewModel.favoriteState.observeAsState().value
     Button(
         onClick = {
-            product.favorite = product.favorite == false
-            Log.v("TEST-f", "${product.name}_favorite:${product.favorite}")
+            if (favoriteState != null) {
+                viewModel.changeFavoriteState(favoriteState)
+            }
+            Log.d("favorite",favoriteState.toString())
         },
         // Uses ButtonDefaults.ContentPadding by default
         contentPadding = PaddingValues(
@@ -89,7 +97,7 @@ fun NonFavoriteButton(product: Product) {
 @Composable
 fun PreviewFavoriteButton() {
     Column() {
-        FavoriteButton(Products.first())
+        FavoriteButton(Products.first(), FavoriteScreenViewModel())
     }
 }
 
@@ -97,6 +105,6 @@ fun PreviewFavoriteButton() {
 @Composable
 fun PreviewNonFavoriteButton() {
     Column() {
-        NonFavoriteButton(Products.first())
+        NonFavoriteButton(Products.first(), FavoriteScreenViewModel())
     }
 }
