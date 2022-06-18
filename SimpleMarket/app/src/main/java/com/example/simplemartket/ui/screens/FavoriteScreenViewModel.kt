@@ -11,6 +11,6 @@ class FavoriteScreenViewModel: ViewModel(){
 
     fun changeFavoriteState(){
         if(_favoriteState.value==true) _favoriteState.value=false
-        if(_favoriteState.value==false) _favoriteState.value=true
+        else _favoriteState.value=true
     }
 }
