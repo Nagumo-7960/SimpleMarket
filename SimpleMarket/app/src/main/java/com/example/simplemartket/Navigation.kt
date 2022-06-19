@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.simplemartket.ui.screens.FavoriteScreen
+import com.example.simplemartket.ui.screens.FavoriteScreenViewModel
 import com.example.simplemartket.ui.screens.HomeScreen
 import com.example.simplemartket.ui.screens.ProductDetailScreen
 

@@ -1,5 +1,6 @@
 package com.example.simplemartket.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -20,6 +21,7 @@ import com.example.simplemartket.ui.components.NonFavoriteButton
 
 @Composable
 fun ProductDetailScreen(toDetail: Int) {
+    Log.d("favorite","ただ呼ばれただけ")
     Column {
         ProductDetail(products = Products.get(toDetail),FavoriteScreenViewModel())
     }
@@ -27,7 +29,9 @@ fun ProductDetailScreen(toDetail: Int) {
 
 @Composable
 fun ProductDetail(products: Product,viewModel: FavoriteScreenViewModel) {
+
     val favoriteState = viewModel.favoriteState.observeAsState().value
+    Log.d("favorite",favoriteState.toString())
     val painter = rememberImagePainter(products.imageUrl)
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -86,7 +90,7 @@ fun ProductDetail(products: Product,viewModel: FavoriteScreenViewModel) {
                 .fillMaxWidth()
         ) {
             if(favoriteState==true) FavoriteButton(products, FavoriteScreenViewModel())
-            if(favoriteState==false) NonFavoriteButton(products, FavoriteScreenViewModel()
+            else FavoriteButton(products, FavoriteScreenViewModel()
             )
         }
     }
