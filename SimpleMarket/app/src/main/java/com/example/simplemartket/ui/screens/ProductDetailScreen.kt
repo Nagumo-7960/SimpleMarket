@@ -3,6 +3,7 @@ package com.example.simplemartket.ui.screens
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
@@ -22,8 +23,16 @@ import com.example.simplemartket.ui.components.NonFavoriteButton
 @Composable
 fun ProductDetailScreen(toDetail: Int) {
     Log.d("favorite","ただ呼ばれただけ")
-    Column {
-        ProductDetail(products = Products.get(toDetail),FavoriteScreenViewModel())
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                bottom = 60.dp
+            )
+    ) {
+        item {
+            ProductDetail(products = Products.get(toDetail),FavoriteScreenViewModel())
+        }
     }
 }
 
