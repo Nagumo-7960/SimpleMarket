@@ -38,7 +38,8 @@ fun Navigation(navController: NavHostController) {
             )
         ) { backStackEntry ->
             val productId = backStackEntry.arguments?.getInt("productId")?:0
-            ProductDetailScreen (productId)
+            val viewModel:FavoriteScreenViewModel = FavoriteScreenViewModel()
+            ProductDetailScreen (productId,viewModel)
         }
     }
 }

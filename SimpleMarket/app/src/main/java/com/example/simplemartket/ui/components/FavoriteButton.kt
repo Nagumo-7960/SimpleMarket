@@ -13,6 +13,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,8 +26,8 @@ import com.example.simplemartket.ui.theme.ThemeColor
 
 
 @Composable
-fun FavoriteButton(product: Product,viewModel: FavoriteScreenViewModel) {
-    val favoriteState = viewModel.favoriteState.observeAsState().value
+fun FavoriteButton(product: Product, viewModel: FavoriteScreenViewModel) {
+    val favoriteState by viewModel.favoriteState.observeAsState()
     Button(
         onClick = {
             viewModel.changeFavoriteState()
@@ -93,7 +94,7 @@ fun NonFavoriteButton(product: Product,viewModel: FavoriteScreenViewModel) {
 @Composable
 fun PreviewFavoriteButton() {
     Column() {
-        FavoriteButton(Products.first(), FavoriteScreenViewModel())
+//        FavoriteButton(Products.first(), FavoriteScreenViewModel())
     }
 }
 
@@ -101,6 +102,6 @@ fun PreviewFavoriteButton() {
 @Composable
 fun PreviewNonFavoriteButton() {
     Column() {
-        NonFavoriteButton(Products.first(), FavoriteScreenViewModel())
+//        NonFavoriteButton(Products.first(), FavoriteScreenViewModel())
     }
 }

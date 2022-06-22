@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -21,26 +20,23 @@ import com.example.simplemartket.ui.components.FavoriteButton
 import com.example.simplemartket.ui.components.NonFavoriteButton
 
 @Composable
-fun ProductDetailScreen(toDetail: Int) {
-    Log.d("favorite","ただ呼ばれただけ")
+fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
+    //val favoriteState by viewModel.favoriteState.observeAsState(initial = false)
+    Log.d("favorite", "ProductDetailScreenが呼ばれる")
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(
-                bottom = 60.dp
-            )
     ) {
         item {
-            ProductDetail(products = Products.get(toDetail),FavoriteScreenViewModel())
+            ProductDetail(products = Products.get(toDetail), viewModel = viewModel)
         }
     }
 }
 
 @Composable
-fun ProductDetail(products: Product,viewModel: FavoriteScreenViewModel) {
+fun ProductDetail(products: Product, viewModel: FavoriteScreenViewModel) {
 
-    val favoriteState = viewModel.favoriteState.observeAsState().value
-    Log.d("favorite",favoriteState.toString())
+    Log.d("favorite", viewModel.favoriteState.toString())
     val painter = rememberImagePainter(products.imageUrl)
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -98,11 +94,20 @@ fun ProductDetail(products: Product,viewModel: FavoriteScreenViewModel) {
                 )
                 .fillMaxWidth()
         ) {
-            if(favoriteState==true) FavoriteButton(products, FavoriteScreenViewModel())
-            else FavoriteButton(products, FavoriteScreenViewModel()
+            if (viewModel.favoriteState.value == true) FavoriteButton(
+                products,
+                viewModel = viewModel
             )
+            else NonFavoriteButton(products, viewModel)
+        }
+        Column (
+            modifier = Modifier
+                .height(150.dp)
+                ){
+
         }
     }
+
 
 
 }
