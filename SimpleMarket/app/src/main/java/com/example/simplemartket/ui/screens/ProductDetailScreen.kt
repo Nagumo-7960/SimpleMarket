@@ -36,7 +36,7 @@ fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
 @Composable
 fun ProductDetail(products: Product, viewModel: FavoriteScreenViewModel) {
 
-    Log.d("favorite", viewModel.favoriteState.toString())
+//    Log.d("favorite", viewModel.favoriteState.toString())
     val painter = rememberImagePainter(products.imageUrl)
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -95,10 +95,12 @@ fun ProductDetail(products: Product, viewModel: FavoriteScreenViewModel) {
                 .fillMaxWidth()
         ) {
             if (viewModel.favoriteState.value == true) FavoriteButton(
-                products,
-                viewModel = viewModel
-            )
-            else NonFavoriteButton(products, viewModel)
+                products){
+                viewModel.changeFavoriteState()
+            }
+            else NonFavoriteButton(products){
+                viewModel.changeFavoriteState()
+            }
         }
         Column (
             modifier = Modifier
