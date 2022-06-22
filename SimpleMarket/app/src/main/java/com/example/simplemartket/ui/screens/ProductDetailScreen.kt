@@ -22,7 +22,8 @@ import com.example.simplemartket.ui.components.NonFavoriteButton
 
 @Composable
 fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
-    val favoriteState = viewModel.favoriteState.observeAsState()
+    val favoriteState = viewModel.favoriteState.observeAsState().value
+
     Log.d("favorite", "ProductDetailScreenが呼ばれる")
     LazyColumn(
         modifier = Modifier
@@ -86,7 +87,7 @@ fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
                         )
                         .fillMaxWidth()
                 ) {
-                    if (viewModel.favoriteState.value == true) FavoriteButton(
+                    if (favoriteState == true) FavoriteButton(
                         Products.get(toDetail)){
                         viewModel.changeFavoriteState()
                     }
