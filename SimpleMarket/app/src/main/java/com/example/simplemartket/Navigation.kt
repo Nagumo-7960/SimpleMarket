@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.simplemartket.ui.screens.FavoriteScreen
+import com.example.simplemartket.ui.screens.FavoriteScreenViewModel
 import com.example.simplemartket.ui.screens.HomeScreen
 import com.example.simplemartket.ui.screens.ProductDetailScreen
 
@@ -37,7 +38,8 @@ fun Navigation(navController: NavHostController) {
             )
         ) { backStackEntry ->
             val productId = backStackEntry.arguments?.getInt("productId")?:0
-            ProductDetailScreen (productId)
+            val viewModel:FavoriteScreenViewModel = FavoriteScreenViewModel()
+            ProductDetailScreen (productId,viewModel)
         }
     }
 }

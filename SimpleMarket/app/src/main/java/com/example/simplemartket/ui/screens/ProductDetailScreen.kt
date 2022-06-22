@@ -1,7 +1,9 @@
 package com.example.simplemartket.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,16 +17,26 @@ import coil.compose.rememberImagePainter
 import com.example.simplemartket.model.Product
 import com.example.simplemartket.model.Products
 import com.example.simplemartket.ui.components.FavoriteButton
+import com.example.simplemartket.ui.components.NonFavoriteButton
 
 @Composable
-fun ProductDetailScreen(toDetail: Int) {
-    Column {
-        ProductDetail(products = Products.get(toDetail))
+fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
+    //val favoriteState by viewModel.favoriteState.observeAsState(initial = false)
+    Log.d("favorite", "ProductDetailScreenが呼ばれる")
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        item {
+            ProductDetail(products = Products.get(toDetail), viewModel = viewModel)
+        }
     }
 }
 
 @Composable
-fun ProductDetail(products: Product) {
+fun ProductDetail(products: Product, viewModel: FavoriteScreenViewModel) {
+
+    Log.d("favorite", viewModel.favoriteState.toString())
     val painter = rememberImagePainter(products.imageUrl)
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -82,9 +94,20 @@ fun ProductDetail(products: Product) {
                 )
                 .fillMaxWidth()
         ) {
-            FavoriteButton()
+            if (viewModel.favoriteState.value == true) FavoriteButton(
+                products,
+                viewModel = viewModel
+            )
+            else NonFavoriteButton(products, viewModel)
+        }
+        Column (
+            modifier = Modifier
+                .height(150.dp)
+                ){
+
         }
     }
+
 
 
 }
@@ -92,5 +115,5 @@ fun ProductDetail(products: Product) {
 @Preview
 @Composable
 fun PreviewProductDetail() {
-    ProductDetail(products = Products.first())
+    ProductDetail(products = Products.first(),FavoriteScreenViewModel())
 }
