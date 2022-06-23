@@ -25,6 +25,7 @@ fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
     val favoriteState = viewModel.favoriteState.observeAsState().value
 
     Log.d("favorite", "ProductDetailScreenが呼ばれる")
+    Log.d("favorite", favoriteState.toString())
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
@@ -88,17 +89,20 @@ fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
                         .fillMaxWidth()
                 ) {
                     if (favoriteState == true) FavoriteButton(
-                        Products.get(toDetail)){
+                        Products.get(toDetail)
+                    ) {
                         viewModel.changeFavoriteState()
+                        Log.d("favorite", favoriteState.toString())
                     }
-                    else NonFavoriteButton(Products.get(toDetail)){
+                    else NonFavoriteButton(Products.get(toDetail)) {
                         viewModel.changeFavoriteState()
+                        Log.d("favorite", favoriteState.toString())
                     }
                 }
-                Column (
+                Column(
                     modifier = Modifier
                         .height(150.dp)
-                ){
+                ) {
 
                 }
             }
@@ -112,11 +116,10 @@ fun ProductDetail(products: Product, viewModel: FavoriteScreenViewModel) {
 //    Log.d("favorite", viewModel.favoriteState.toString())
 
 
-
 }
 
 @Preview
 @Composable
 fun PreviewProductDetail() {
-    ProductDetail(products = Products.first(),FavoriteScreenViewModel())
+    ProductDetail(products = Products.first(), FavoriteScreenViewModel())
 }
