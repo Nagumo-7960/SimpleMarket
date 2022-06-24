@@ -26,13 +26,9 @@ import com.example.simplemartket.ui.theme.ThemeColor
 
 
 @Composable
-fun FavoriteButton(product: Product, viewModel: FavoriteScreenViewModel) {
-    val favoriteState by viewModel.favoriteState.observeAsState()
+fun FavoriteButton(product: Product, onClick:() -> Unit) {
     Button(
-        onClick = {
-            viewModel.changeFavoriteState()
-            Log.d("favorite",favoriteState.toString())
-        },
+        onClick = onClick,
         // Uses ButtonDefaults.ContentPadding by default
         contentPadding = PaddingValues(
             start = 20.dp,
@@ -58,13 +54,9 @@ fun FavoriteButton(product: Product, viewModel: FavoriteScreenViewModel) {
 }
 
 @Composable
-fun NonFavoriteButton(product: Product,viewModel: FavoriteScreenViewModel) {
-    val favoriteState = viewModel.favoriteState.observeAsState().value
+fun NonFavoriteButton(product: Product,onClick: () -> Unit) {
     Button(
-        onClick = {
-            viewModel.changeFavoriteState()
-            Log.d("favorite",favoriteState.toString())
-        },
+        onClick = onClick,
         // Uses ButtonDefaults.ContentPadding by default
         contentPadding = PaddingValues(
             start = 20.dp,

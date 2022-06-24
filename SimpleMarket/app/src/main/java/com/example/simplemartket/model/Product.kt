@@ -7,7 +7,17 @@ data class Product(
     val value:Int,
     val explanation:String,
     var favorite:Boolean
-)
+
+
+){
+    fun changeFavorite(){
+        if(favorite==false){
+            favorite=true
+        }else{
+            favorite=false
+        }
+    }
+}
 
 val Products = listOf(
     Product(
