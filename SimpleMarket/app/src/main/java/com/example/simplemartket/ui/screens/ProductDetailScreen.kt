@@ -20,9 +20,13 @@ import com.example.simplemartket.model.Products
 import com.example.simplemartket.ui.components.FavoriteButton
 import com.example.simplemartket.ui.components.NonFavoriteButton
 
+
 @Composable
 fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
     val favoriteState = viewModel.favoriteState.observeAsState().value
+    if(Products.get(toDetail).favorite==true){
+        viewModel.changeFavoriteState()
+    }
 
     Log.d("favorite", "ProductDetailScreenが呼ばれる")
     Log.d("favorite", favoriteState.toString())
@@ -92,10 +96,12 @@ fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
                         Products.get(toDetail)
                     ) {
                         viewModel.changeFavoriteState()
+                        Products.get(toDetail).changeFavorite()
                         Log.d("favorite", favoriteState.toString())
                     }
                     else NonFavoriteButton(Products.get(toDetail)) {
                         viewModel.changeFavoriteState()
+                        Products.get(toDetail).changeFavorite()
                         Log.d("favorite", favoriteState.toString())
                     }
                 }
