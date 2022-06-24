@@ -25,7 +25,7 @@ import com.example.simplemartket.ui.components.NonFavoriteButton
 fun ProductDetailScreen(toDetail: Int, viewModel: FavoriteScreenViewModel) {
     val favoriteState = viewModel.favoriteState.observeAsState().value
     if(Products.get(toDetail).favorite==true){
-        viewModel.changeFavoriteState()
+        viewModel.reloadFavoriteState()
     }
 
     Log.d("favorite", "ProductDetailScreenが呼ばれる")

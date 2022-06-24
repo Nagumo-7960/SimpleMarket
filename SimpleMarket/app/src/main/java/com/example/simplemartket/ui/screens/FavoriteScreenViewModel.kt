@@ -14,4 +14,7 @@ class FavoriteScreenViewModel : ViewModel() {
         else _favoriteState.value = true
         Log.d("favorite", "changeFavoriteStateが呼ばれる")
     }
+    fun reloadFavoriteState(){
+        _favoriteState.value = true
+    }
 }
