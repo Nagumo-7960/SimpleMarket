@@ -25,9 +25,10 @@ fun Navigation(navController: NavHostController) {
             }
         }
         composable("favorite") {
-            FavoriteScreen {
-                navController.navigate("favorite")
-            }
+            FavoriteScreen (
+                toFavorite = {navController.navigate("favorite")},
+                toDetail = {productId -> navController.navigate("detail/${productId}")}
+            )
         }
         composable(
             "detail/{productId}",
