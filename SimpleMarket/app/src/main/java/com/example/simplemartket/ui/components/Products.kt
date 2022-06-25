@@ -89,6 +89,14 @@ fun ProductCards(toDetail: (Int) -> Unit = { _ -> }) {
     }
 }
 
+@Composable
+fun FavoriteProductCards(toDetail: (Int) -> Unit = { _ -> }) {
+    for (i in 0..Products.size - 1) {
+        if(Products.get(i).favorite==true) ProductsCard(products = Products.get(i), toDetail)
+        Log.d("Product", i.toString())
+    }
+}
+
 @Preview
 @Composable
 fun PreviewProductCard() {

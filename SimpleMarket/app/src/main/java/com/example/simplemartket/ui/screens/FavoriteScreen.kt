@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.simplemartket.ui.components.FavoriteProductCards
 import com.example.simplemartket.ui.components.ProductCards
 
 @Composable
@@ -22,7 +23,7 @@ fun FavoriteScreen(toFavorite:() ->Unit, toDetail:(Int) -> Unit = {_ ->}) {
             )
     ) {
         item {
-            ProductCards(toDetail)
+            FavoriteProductCards(toDetail)
         }
 
     }
