@@ -11,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
                             BottomNavItem(
                                 name = "favorite",
                                 route = "favorite",
-                                icon = Icons.Default.Favorite
+                                icon = Icons.Default.Star
                             )
                         ),
                         navController = navController,
