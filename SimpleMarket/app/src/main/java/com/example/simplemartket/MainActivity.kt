@@ -46,7 +46,9 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         modifier = Modifier,
                         onItemClick ={
-                            navController.navigate(it.route)
+                            navController.navigate(it.route){
+                                launchSingleTop = true
+                            }
                         }
                     )
                 }
